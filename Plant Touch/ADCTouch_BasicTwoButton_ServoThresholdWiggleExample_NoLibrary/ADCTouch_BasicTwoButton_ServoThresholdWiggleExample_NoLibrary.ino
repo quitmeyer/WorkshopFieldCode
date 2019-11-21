@@ -2,8 +2,8 @@
    This is an extension of Martin2250's ADC touch examples
    to have the library built in, for rapid deployment in workshop settings
 
-   In this one, you can hook a servo directly up
-  and if the sensor passes a threshold, the servo will flip to 180
+   In this one, you can hook a servo directly up 
+  and if the sensor passes a threshold, the servo will wiggle around
 
 */
 
@@ -20,7 +20,7 @@ int val0constrained = 0;
 int val0high = 120;
 int val0low = 0;
 
-int threshold = 40;
+int threshold=40;
 int pos = 0;    // variable to store the servo position
 
 
@@ -54,12 +54,22 @@ void loop()
   Serial.print("\t");
 
   Serial.println(value1);
- 
- myservo.write(0);
-  if (value0 > threshold) {
+  delay(100);
 
-    myservo.write(180);
+if(value0>threshold){
+
+
+ for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+    // in steps of 1 degree
+    myservo.write(pos);              // tell servo to go to position in variable 'pos'
+    delay(1);                       // waits 15ms for the servo to reach the position
   }
+  for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+    myservo.write(pos);              // tell servo to go to position in variable 'pos'
+    //delay(15);                       // waits 15ms for the servo to reach the position
+  }
+  
+}
 
- delay(100);
+
 }
