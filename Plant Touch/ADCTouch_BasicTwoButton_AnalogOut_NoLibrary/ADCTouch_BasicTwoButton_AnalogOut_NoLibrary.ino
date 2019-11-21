@@ -2,13 +2,14 @@
  * This is an extension of Martin2250's ADC touch examples
  * to have the library built in, for rapid deployment in workshop settings
  * 
+ * this will send the output response to pin 11 (because it is the right spacing for a piezo buzzer to reach the gnd pin!)
  */
 
 #include "ADCTouch.h"
 
 int ref0, ref1;     //reference values to remove offset
 
-int analogPinOut=9;
+int analogPinOut=11;
 int val0constrained=0;
 
 int val0high=120;
@@ -48,7 +49,7 @@ void loop()
     Serial.print("\t");
   
     Serial.print(value1);
-    delay(100);
+    delay(50);
 
 val0constrained = map(value0,val0low,val0high,0,255); // map from 0 to 255 for output for an LED or Buzzer
    
