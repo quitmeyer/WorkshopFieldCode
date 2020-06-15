@@ -16,10 +16,11 @@ int ref0, ref1;     //reference values to remove offset
 
 int val0constrained = 0;
 
-int val0high = 120;
+int val0high = 15;
 int val0low = 0;
 
-int threshold=40;
+int threshold=10;
+int led=11;
 
 
 void setup()
@@ -32,6 +33,7 @@ void setup()
 
   ref0 = ADCTouch.read(A0, 500);    //create reference values to
   ref1 = ADCTouch.read(A1, 500);    //account for the capacitance of the pad
+pinMode(led,OUTPUT);
 }
 
 void loop()
@@ -63,6 +65,6 @@ void loop()
   Serial.println(val0constrained);
 
 myservo.write(val0constrained);
-
+analogWrite(led,val0constrained);
 
 }
