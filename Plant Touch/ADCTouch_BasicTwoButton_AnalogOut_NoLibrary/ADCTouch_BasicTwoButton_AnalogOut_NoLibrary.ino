@@ -25,13 +25,12 @@ void setup()
 
     Serial.begin(9600);
 
-    pinMode(analogPinOut,OUTPUT);
 
     ref0 = ADCTouch.read(A0, 500);    //create reference values to 
     ref1 = ADCTouch.read(A1, 500);    //account for the capacitance of the pad
 
-    pinMode(12,OUTPUT);
-    digitalWrite(12,HIGH);
+    pinMode(analogpinout,OUTPUT);
+    digitalWrite(analogPinOut,HIGH);
 } 
 
 void loop() 
