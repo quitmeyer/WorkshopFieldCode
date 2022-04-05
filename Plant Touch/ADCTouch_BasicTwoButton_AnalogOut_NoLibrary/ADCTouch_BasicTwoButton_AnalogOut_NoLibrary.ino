@@ -29,7 +29,7 @@ void setup()
     ref0 = ADCTouch.read(A0, 500);    //create reference values to 
     ref1 = ADCTouch.read(A1, 500);    //account for the capacitance of the pad
 
-    pinMode(analogpinout,OUTPUT);
+    pinMode(analogPinOut,OUTPUT);
     digitalWrite(analogPinOut,HIGH);
 } 
 
