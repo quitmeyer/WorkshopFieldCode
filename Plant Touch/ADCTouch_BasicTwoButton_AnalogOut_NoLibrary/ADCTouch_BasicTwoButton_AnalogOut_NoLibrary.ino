@@ -10,6 +10,8 @@
 int ref0, ref1;     //reference values to remove offset
 
 int analogPinOut=11;
+int digitalPinOut=12;
+int digitalPinThresh=30;
 int val0constrained=0;
 
 int val0high=120;
@@ -30,6 +32,8 @@ void setup()
     ref1 = ADCTouch.read(A1, 500);    //account for the capacitance of the pad
 
     pinMode(analogPinOut,OUTPUT);
+        pinMode(digitalPinOut,OUTPUT);
+
     digitalWrite(analogPinOut,HIGH);
 } 
 
@@ -62,6 +66,14 @@ val0constrained = constrain(val0constrained,0,255); // extra make sure it doesn'
   //  Serial.println(val0constrained);
 
     analogWrite(analogPinOut, val0constrained);
+
+    if(val0constrained>digitalPinThresh){
+      digitalWrite(digitalPinOut,HIGH);
+    }
+    else{
+            digitalWrite(digitalPinOut,LOW);
+
+    }
 
     
 }
